@@ -47,3 +47,18 @@
 - 図表、数字、タイムライン、チェックリストを主役にする
 - Mobile first; 1画面1判断
 - Card乱用を避け、文書とツールの中間のUI
+
+## Approved mobile direction (2026-09-21)
+- The approved visual reference is the second mobile UI concept generated in this project.
+- Mobile is the primary design surface: hero photo + large editorial headline + three key metrics + sticky bottom navigation.
+- Visual hierarchy: photo → headline → CTA → 3 key facts → diagram → tools/comparison.
+- Use real photography only as a supporting trust element; diagrams, tables, timelines and tools remain the core content.
+- Hero photo source currently used in implementation: Arina Krasnikova / Pexels, photo ID 5103415 (Pexels Free License).
+
+## Motion
+- Scroll reveal for major sections using IntersectionObserver.
+- Metric/tool cards may lift slightly on hover/tap.
+- Calculator result graph animates from the baseline.
+- Mobile comparison tables are horizontally swipeable.
+- Respect `prefers-reduced-motion`; all content must remain fully usable with animation disabled.
+- Avoid autoplay video, heavy parallax and decorative motion that harms Core Web Vitals.
