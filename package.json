@@ -1,0 +1,32 @@
+{
+  "name": "junior-nisa",
+  "version": "0.1.0",
+  "description": "ジュニアNISA情報サイト（2027年開始予定制度の解説・比較・シミュレーション）",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oosaka0123-sudo/junior-nisa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/oosaka0123-sudo/junior-nisa/issues"
+  },
+  "homepage": "https://github.com/oosaka0123-sudo/junior-nisa#readme",
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.3",
+    "typescript": "^6.0.3"
+  },
+  "private": true,
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
