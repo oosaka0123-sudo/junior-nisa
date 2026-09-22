@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="こどもNISA設計室">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#42bea9"/>
+      <stop offset="1" stop-color="#1e6fbd"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#f5fbff"/>
+  <path d="M14 36c0-13 9-23 22-23 8 0 14 3 18 9-2 16-10 27-26 29-9 1-14-5-14-15z" fill="url(#g)"/>
+  <circle cx="37" cy="31" r="8" fill="#fff" opacity=".9"/>
+</svg>
