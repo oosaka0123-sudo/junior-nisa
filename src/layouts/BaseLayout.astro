@@ -1,7 +1,74 @@
 ---
 import '../styles/global.css';
-const { title, description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const {
+  title,
+  description,
+  verifiedDate = '2026-09-23',
+  showPageMeta,
+  noindex = false,
+  affiliate = false,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/junior-nisa/' || currentPath === '/junior-nisa';
+const showMeta = showPageMeta ?? (!isHome && !currentPath.endsWith('/404'));
+const canonical = new URL(currentPath, Astro.site);
+const ogImage = new URL('/junior-nisa/images/family-hero.jpg', Astro.site);
+const jpDate = verifiedDate?.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$1年$2月$3日');
+
+const labels = {
+  '/junior-nisa/system/': '制度',
+  '/junior-nisa/gift-tax/': '贈与税',
+  '/junior-nisa/withdrawal/': '引き出し',
+  '/junior-nisa/calculator/': '試算',
+  '/junior-nisa/compare/': '金融機関比較',
+  '/junior-nisa/providers/': '金融機関比較',
+  '/junior-nisa/sources/': '一次資料',
+  '/junior-nisa/updates/': '更新情報',
+  '/junior-nisa/about/': '運営方針',
+  '/junior-nisa/about/editorial-policy/': '編集ポリシー',
+  '/junior-nisa/about/advertising-policy/': '広告ポリシー',
+  '/junior-nisa/about/privacy/': 'プライバシー',
+};
+
+const crumbs = [{ name: 'ホーム', url: new URL('/junior-nisa/', Astro.site).href }];
+if (!isHome) {
+  crumbs.push({ name: labels[currentPath] ?? title.split('|')[0].trim(), url: canonical.href });
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'こどもNISA設計室',
+  url: new URL('/junior-nisa/', Astro.site).href,
+  description: '2027年のこどもNISAを一次情報ベースで整理する独立系教育サイト。',
+  inLanguage: 'ja-JP',
+};
+
+const webpageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonical.href,
+  dateModified: verifiedDate,
+  inLanguage: 'ja-JP',
+  isPartOf: { '@type': 'WebSite', name: 'こどもNISA設計室', url: websiteSchema.url },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+};
+
+const isCurrent = (href) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
 ---
 <!doctype html>
 <html lang="ja">
@@ -10,13 +77,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large'} />
   <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/junior-nisa/favicon.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#ffffff" />
+  <meta property="og:site_name" content="こどもNISA設計室" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webpageSchema)} />
+  {!isHome && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="/junior-nisa/" aria-label="こどもNISA設計室 ホーム">
@@ -24,23 +102,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <span class="brand-copy"><b>こどもNISA設計室</b><small>子どもの未来を、いちばん近くで考える。</small></span>
       </a>
       <nav class="desktop-nav" aria-label="メインナビゲーション">
-        <a href="/junior-nisa/system/">制度</a>
-        <a href="/junior-nisa/gift-tax/">贈与税</a>
-        <a href="/junior-nisa/withdrawal/">引き出し</a>
-        <a href="/junior-nisa/calculator/">試算</a>
-        <a href="/junior-nisa/providers/">金融機関</a>
-        <a href="/junior-nisa/updates/">更新情報</a>
-        <a href="/junior-nisa/sources/">一次資料</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/system/') }} aria-current={isCurrent('/junior-nisa/system/') ? 'page' : undefined} href="/junior-nisa/system/">制度</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/gift-tax/') }} aria-current={isCurrent('/junior-nisa/gift-tax/') ? 'page' : undefined} href="/junior-nisa/gift-tax/">贈与税</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/withdrawal/') }} aria-current={isCurrent('/junior-nisa/withdrawal/') ? 'page' : undefined} href="/junior-nisa/withdrawal/">引き出し</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/calculator/') }} aria-current={isCurrent('/junior-nisa/calculator/') ? 'page' : undefined} href="/junior-nisa/calculator/">試算</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/compare/') }} aria-current={isCurrent('/junior-nisa/compare/') ? 'page' : undefined} href="/junior-nisa/compare/">金融機関</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/updates/') }} aria-current={isCurrent('/junior-nisa/updates/') ? 'page' : undefined} href="/junior-nisa/updates/">更新情報</a>
+        <a class:list={{ active: isCurrent('/junior-nisa/sources/') }} aria-current={isCurrent('/junior-nisa/sources/') ? 'page' : undefined} href="/junior-nisa/sources/">一次資料</a>
       </nav>
       <a class="header-cta" href="/junior-nisa/#quick">まず30秒で理解 →</a>
       <details class="mobile-menu">
         <summary aria-label="メニューを開く"><span></span><span></span><span></span></summary>
-        <nav>
+        <nav aria-label="モバイルメニュー">
           <a href="/junior-nisa/system/">制度</a>
           <a href="/junior-nisa/gift-tax/">贈与税</a>
           <a href="/junior-nisa/withdrawal/">引き出し</a>
           <a href="/junior-nisa/calculator/">試算</a>
-          <a href="/junior-nisa/providers/">金融機関</a>
+          <a href="/junior-nisa/compare/">金融機関</a>
           <a href="/junior-nisa/updates/">更新情報</a>
           <a href="/junior-nisa/sources/">一次資料</a>
         </nav>
@@ -48,20 +126,51 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </div>
   </header>
 
-  <main><slot /></main>
+  <main id="main-content">
+    {showMeta && (
+      <div class="page-meta-shell">
+        <nav class="breadcrumbs" aria-label="パンくず">
+          {crumbs.map((item, index) => (
+            <>
+              {index > 0 && <span aria-hidden="true">›</span>}
+              {index === crumbs.length - 1
+                ? <span aria-current="page">{item.name}</span>
+                : <a href={item.url}>{item.name}</a>}
+            </>
+          ))}
+        </nav>
+        <div class="verify-badge"><span aria-hidden="true">✓</span><time datetime={verifiedDate}>最終確認日：{jpDate}</time></div>
+      </div>
+    )}
+    {affiliate && (
+      <aside class="affiliate-disclosure" aria-label="広告表示">
+        <strong>PR・広告</strong>
+        <span>このページにはアフィリエイト広告が含まれます。掲載順や評価は広告報酬では決めていません。</span>
+      </aside>
+    )}
+    <slot />
+  </main>
 
   <nav class="bottom-nav" aria-label="スマートフォン用ナビゲーション">
-    <a href="/junior-nisa/"><span aria-hidden="true">⌂</span><small>ホーム</small></a>
-    <a href="/junior-nisa/system/"><span aria-hidden="true">▤</span><small>制度</small></a>
-    <a href="/junior-nisa/calculator/"><span aria-hidden="true">▥</span><small>試算</small></a>
-    <a href="/junior-nisa/providers/"><span aria-hidden="true">▦</span><small>比較</small></a>
-    <a href="/junior-nisa/sources/"><span aria-hidden="true">≡</span><small>資料</small></a>
+    <a class:list={{ active: isHome }} aria-current={isHome ? 'page' : undefined} href="/junior-nisa/"><span aria-hidden="true">⌂</span><small>ホーム</small></a>
+    <a class:list={{ active: isCurrent('/junior-nisa/system/') }} aria-current={isCurrent('/junior-nisa/system/') ? 'page' : undefined} href="/junior-nisa/system/"><span aria-hidden="true">▤</span><small>制度</small></a>
+    <a class:list={{ active: isCurrent('/junior-nisa/calculator/') }} aria-current={isCurrent('/junior-nisa/calculator/') ? 'page' : undefined} href="/junior-nisa/calculator/"><span aria-hidden="true">▥</span><small>試算</small></a>
+    <a class:list={{ active: isCurrent('/junior-nisa/compare/') }} aria-current={isCurrent('/junior-nisa/compare/') ? 'page' : undefined} href="/junior-nisa/compare/"><span aria-hidden="true">▦</span><small>比較</small></a>
+    <a class:list={{ active: isCurrent('/junior-nisa/sources/') }} aria-current={isCurrent('/junior-nisa/sources/') ? 'page' : undefined} href="/junior-nisa/sources/"><span aria-hidden="true">≡</span><small>資料</small></a>
   </nav>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
       <div><strong>こどもNISA設計室</strong><p>制度を知る。家族のお金を設計する。</p></div>
-      <p>本サイトは一般的な情報提供を目的とし、投資・税務の個別助言ではありません。重要な判断では公的機関・金融機関の最新情報をご確認ください。</p>
+      <div>
+        <p>本サイトは一般的な情報提供を目的とし、投資・税務の個別助言ではありません。重要な判断では公的機関・金融機関の最新情報をご確認ください。</p>
+        <nav class="footer-links" aria-label="サイト情報">
+          <a href="/junior-nisa/about/">運営方針</a>
+          <a href="/junior-nisa/about/editorial-policy/">編集ポリシー</a>
+          <a href="/junior-nisa/about/advertising-policy/">広告ポリシー</a>
+          <a href="/junior-nisa/about/privacy/">プライバシー</a>
+        </nav>
+      </div>
     </div>
   </footer>
 
