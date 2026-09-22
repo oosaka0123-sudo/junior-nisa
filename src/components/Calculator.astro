@@ -1,0 +1,48 @@
+---
+const { showNext = true } = Astro.props;
+---
+<div class="calculator-widget" aria-describedby="calc-note">
+  <p class="muted" id="calc-note">毎月一定額を積み立てる前提の参考試算です。将来の運用成果を予測・保証するものではありません。</p>
+  <div class="calculator-grid">
+    <label for="monthly">毎月の積立額
+      <div><input id="monthly" inputmode="numeric" type="number" min="0" max="50000" step="1000" value="30000" aria-describedby="calc-note"><span>円</span></div>
+    </label>
+    <label for="years">積立年数
+      <div><input id="years" inputmode="numeric" type="number" min="1" max="18" step="1" value="17" aria-describedby="calc-note"><span>年</span></div>
+    </label>
+    <label for="rate">仮定の年利
+      <div><input id="rate" inputmode="decimal" type="number" min="0" max="10" step=".1" value="3" aria-describedby="calc-note"><span>%</span></div>
+    </label>
+  </div>
+  <button class="calc-btn" type="button" id="recalc">試算する →</button>
+  <div class="calc-output" role="status" aria-live="polite" aria-atomic="true">
+    <div><small>仮定の試算値</small><strong id="result">—</strong><span id="principal">—</span></div>
+    <div class="chart" id="chart" aria-hidden="true"></div>
+  </div>
+  {showNext && <a class="calc-next" href="/junior-nisa/compare/">次に金融機関の比較基準を見る →</a>}
+</div>
+
+<script is:inline>
+  const q=(id)=>document.getElementById(id);
+  const fmt=(n)=>Math.round(n).toLocaleString('ja-JP');
+  function calc(){
+    const m=Math.min(50000,Math.max(0,+q('monthly').value||0));
+    const y=Math.min(18,Math.max(1,+q('years').value||1));
+    const r=Math.min(10,Math.max(0,+q('rate').value||0))/100/12;
+    let v=0,p=0,vals=[];
+    for(let i=0;i<y*12;i++){
+      const add=Math.min(m,6000000-p);
+      v=(v+add)*(1+r);
+      p+=add;
+      if((i+1)%12===0) vals.push(v);
+    }
+    q('result').textContent='約 '+fmt(v)+' 円';
+    q('principal').textContent='積立元本 '+fmt(p)+' 円（上限600万円）';
+    const max=Math.max(...vals,1);
+    q('chart').innerHTML=vals.map((x)=>'<i style="height:'+Math.max(8,x/max*100)+'%"></i>').join('');
+    window.dataLayer?.push({event:'jnisa_calculator_used',monthly:m,years:y,rate:r*1200});
+  }
+  ['monthly','years','rate'].forEach((id)=>q(id)?.addEventListener('input',calc));
+  q('recalc')?.addEventListener('click',calc);
+  calc();
+</script>
