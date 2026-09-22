@@ -17,7 +17,7 @@ const canonical = new URL(currentPath, Astro.site);
 const ogImage = new URL('/junior-nisa/images/family-hero.jpg', Astro.site);
 const jpDate = verifiedDate?.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$1年$2月$3日');
 
-const labels = {
+const labels: Record<string, string> = {
   '/junior-nisa/system/': '制度',
   '/junior-nisa/gift-tax/': '贈与税',
   '/junior-nisa/withdrawal/': '引き出し',
@@ -68,7 +68,7 @@ const breadcrumbSchema = {
   })),
 };
 
-const isCurrent = (href) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
+const isCurrent = (href: string) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
 ---
 <!doctype html>
 <html lang="ja">
