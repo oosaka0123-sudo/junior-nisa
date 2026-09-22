@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="金融機関比較 | こどもNISA設計室" description="こどもNISAの金融機関を、受付時期・親権者口座・最低積立額・商品・手続きなど同じ基準で比較するためのページ。">
+  <section class="hero">
+    <p class="eyebrow">COMPARE</p>
+    <h1>金融機関は「順位」より条件で比べる</h1>
+    <p class="lead">各社の正式発表を同じ項目・同じ根拠で比較します。広告報酬で掲載順や評価を変えません。</p>
+  </section>
+
+  <section class="section">
+    <div class="trust-note">
+      <strong>現在、アフィリエイト広告リンクは掲載していません。</strong>
+      <p>今後掲載する場合はページ上部とCTA付近で明示し、広告の有無と編集評価を分離します。</p>
+    </div>
+
+    <h2>比較する項目</h2>
+    <div class="table-wrap" role="region" aria-label="金融機関の比較基準" tabindex="0">
+      <table>
+        <caption class="sr-only">こどもNISAで金融機関を比較するときの掲載項目とルール</caption>
+        <thead><tr><th>比較項目</th><th>掲載ルール</th></tr></thead>
+        <tbody>
+          <tr><td>受付開始・対応状況</td><td>各社の公式発表日と対象条件を確認して掲載</td></tr>
+          <tr><td>親権者口座</td><td>必要性、同一金融機関要件、手続き方法を分けて確認</td></tr>
+          <tr><td>最低積立額</td><td>公式の注文条件を確認し、期間限定条件と通常条件を分離</td></tr>
+          <tr><td>対象商品</td><td>制度上の対象範囲と各社の実際の取扱いを混同しない</td></tr>
+          <tr><td>積立・ポイント等</td><td>未成年口座への適用可否と条件を公式資料で確認</td></tr>
+          <tr><td>手続き・必要書類</td><td>オンライン/書面、本人確認、親権者手続きを確認</td></tr>
+          <tr><td>最終確認日</td><td>金融機関ごと・重要項目ごとに情報鮮度を表示</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>正式発表が揃うまでの方針</h2>
+    <ul class="policy-list">
+      <li>未確認の仕様を推測で埋めません。</li>
+      <li>「おすすめ1位」など根拠のない順位を作りません。</li>
+      <li>比較対象に広告案件がない会社も、利用者に重要なら同じ基準で扱います。</li>
+      <li>公式情報と編集部の説明を区別します。</li>
+    </ul>
+
+    <div class="cta-row">
+      <a class="primary-btn" href="/junior-nisa/sources/">制度の一次資料を見る →</a>
+      <a class="sub-link" href="/junior-nisa/about/advertising-policy/">広告ポリシーを見る →</a>
+    </div>
+  </section>
+</BaseLayout>

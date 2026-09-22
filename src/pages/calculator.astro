@@ -1,4 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Calculator from '../components/Calculator.astro';
 ---
-<BaseLayout title="シミュレーター | こどもNISA設計室" description="こどもNISAの積立額・年数・仮定利回りから参考値を試算。"><section class="hero"><p class="eyebrow">TOOLS</p><h1>家族のお金を数字で考える</h1><p class="lead">現在は基本積立試算をTOPに提供。今後、教育費逆算・600万円枠到達・贈与額チェックを追加します。</p></section><section class="section"><div class="notice"><strong>試算は仮定です。</strong><p>将来の運用成果を予測・保証するものではありません。</p></div><p><a href="/junior-nisa/#calc">基本積立シミュレーターを使う →</a></p></section></BaseLayout>
+<BaseLayout title="積立シミュレーター | こどもNISA設計室" description="毎月の積立額・年数・仮定利回りから、こどもNISAの積立イメージを参考試算。">
+  <section class="hero">
+    <p class="eyebrow">CALCULATOR</p>
+    <h1>家族のお金を数字で考える</h1>
+    <p class="lead">毎月一定額を積み立てる単純な月次複利モデルで、元本600万円を上限として参考値を計算します。</p>
+  </section>
+  <section class="section">
+    <div class="notice"><strong>この試算は将来の利益を予測・保証するものではありません。</strong><p>手数料、価格変動、実際の買付日、商品ごとの差、制度変更、税務上の個別事情などは反映していません。</p></div>
+    <div class="calc"><Calculator /></div>
+    <h2>試算を見るときのポイント</h2>
+    <ul class="policy-list">
+      <li>年利は「仮定」であり、実際の運用成果ではありません。</li>
+      <li>毎月の積立額は0〜5万円、積立元本は600万円までに制限しています。</li>
+      <li>結果だけで商品や金融機関を選ばず、制度・費用・手続きも確認してください。</li>
+    </ul>
+  </section>
+</BaseLayout>
