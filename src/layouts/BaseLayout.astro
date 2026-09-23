@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/junior-nisa/' || currentPath === '/junior-nisa';
 const showMeta = showPageMeta ?? (!isHome && !currentPath.endsWith('/404'));
 const canonical = new URL(currentPath, Astro.site);
-const ogImage = new URL('/junior-nisa/images/family-hero.jpg', Astro.site);
+const ogImage = new URL('/junior-nisa/images/family-hero-selected.webp', Astro.site);
 const jpDate = verifiedDate?.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$1年$2月$3日');
 
 const labels: Record<string, string> = {
