@@ -1,0 +1,50 @@
+---
+const faqs = [
+  {
+    q: '0歳から利用できますか？',
+    a: '2027年から、年初に18歳未満の人などを対象とする未成年向けのつみたて投資枠が設けられる制度設計です。具体的な口座開設手続きは金融機関の正式案内を確認します。'
+  },
+  {
+    q: '12歳になれば自由に引き出せますか？',
+    a: '年齢だけで自由に引き出せるわけではありません。12歳基準年以後も、教育費・生活費などの特定事由、必要書類、本人同意などの要件があります。'
+  },
+  {
+    q: '親や祖父母が出したお金は贈与になりますか？',
+    a: 'NISAと贈与税は別制度です。暦年課税では、その年に子どもが受けた贈与を受贈者側で合計して判定します。個別の課税関係は税務署や税理士へ確認してください。'
+  },
+  {
+    q: '年60万円を入れれば贈与税は必ずかかりませんか？',
+    a: 'そうとは限りません。ほかの贈与も合算して判定するため、NISAへの入金額だけで贈与税の有無は判断できません。'
+  },
+  {
+    q: 'どの証券会社が一番おすすめですか？',
+    a: '各社の正式仕様が揃う前に順位は付けません。受付時期、親権者口座、最低積立額、対象商品、手続きなどを同じ基準で比較します。'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a
+    }
+  }))
+};
+---
+<section class="shell faq-section" data-reveal>
+  <div class="section-title"><span></span><div><p>よくある質問</p><h2>ここだけ先に確認</h2></div></div>
+  <div class="faq-list">
+    {faqs.map((item) => (
+      <details>
+        <summary>{item.q}</summary>
+        <p>{item.a}</p>
+      </details>
+    ))}
+  </div>
+  <p class="faq-source"><a href="/junior-nisa/sources/">一次資料と確認日を見る →</a></p>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>

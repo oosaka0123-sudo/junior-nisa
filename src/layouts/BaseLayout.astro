@@ -13,6 +13,7 @@ const {
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/junior-nisa/' || currentPath === '/junior-nisa';
 const showMeta = showPageMeta ?? (!isHome && !currentPath.endsWith('/404'));
+const requiresProfessionalDisclaimer = currentPath === '/junior-nisa/gift-tax/' || currentPath === '/junior-nisa/withdrawal/';
 const canonical = new URL(currentPath, Astro.site);
 const ogImage = new URL('/junior-nisa/images/family-hero-selected.webp', Astro.site);
 const jpDate = verifiedDate?.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$1年$2月$3日');
@@ -69,6 +70,15 @@ const breadcrumbSchema = {
 };
 
 const isCurrent = (href: string) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
+
+const nextRead: Record<string, { href: string; label: string }> = {
+  '/junior-nisa/system/': { href: '/junior-nisa/gift-tax/', label: '次に「NISAと贈与税の違い」を確認する' },
+  '/junior-nisa/gift-tax/': { href: '/junior-nisa/calculator/', label: '次に積立額を試算する' },
+  '/junior-nisa/withdrawal/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
+  '/junior-nisa/calculator/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
+  '/junior-nisa/compare/': { href: '/junior-nisa/sources/', label: '制度の一次資料を確認する' },
+  '/junior-nisa/sources/': { href: '/junior-nisa/updates/', label: '最新の更新履歴を見る' },
+};
 ---
 <!doctype html>
 <html lang="ja">
@@ -148,7 +158,19 @@ const isCurrent = (href: string) => currentPath === href || (href === '/junior-n
         <span>このページにはアフィリエイト広告が含まれます。掲載順や評価は広告報酬では決めていません。</span>
       </aside>
     )}
+    {requiresProfessionalDisclaimer && (
+      <aside class="professional-note" aria-label="個別相談に関する注意">
+        <strong>個別の税務・手続きについて</strong>
+        <span>当サイトは制度の一般的な情報を整理するもので、個別の税務相談には応じていません。具体的な課税関係は税務署・税理士等へ、金融機関固有の手続きは各社へご確認ください。</span>
+      </aside>
+    )}
     <slot />
+    {nextRead[currentPath] && (
+      <aside class="next-read shell" aria-label="次に読む">
+        <small>次に読む</small>
+        <a href={nextRead[currentPath].href}>{nextRead[currentPath].label} →</a>
+      </aside>
+    )}
   </main>
 
   <nav class="bottom-nav" aria-label="スマートフォン用ナビゲーション">
@@ -156,7 +178,6 @@ const isCurrent = (href: string) => currentPath === href || (href === '/junior-n
     <a class:list={{ active: isCurrent('/junior-nisa/system/') }} aria-current={isCurrent('/junior-nisa/system/') ? 'page' : undefined} href="/junior-nisa/system/"><span aria-hidden="true">▤</span><small>制度</small></a>
     <a class:list={{ active: isCurrent('/junior-nisa/calculator/') }} aria-current={isCurrent('/junior-nisa/calculator/') ? 'page' : undefined} href="/junior-nisa/calculator/"><span aria-hidden="true">▥</span><small>試算</small></a>
     <a class:list={{ active: isCurrent('/junior-nisa/compare/') }} aria-current={isCurrent('/junior-nisa/compare/') ? 'page' : undefined} href="/junior-nisa/compare/"><span aria-hidden="true">▦</span><small>比較</small></a>
-    <a class:list={{ active: isCurrent('/junior-nisa/sources/') }} aria-current={isCurrent('/junior-nisa/sources/') ? 'page' : undefined} href="/junior-nisa/sources/"><span aria-hidden="true">≡</span><small>資料</small></a>
   </nav>
 
   <footer class="site-footer">
