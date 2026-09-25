@@ -1,42 +1,101 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="金融機関比較 | こどもNISA設計室" description="こどもNISAの金融機関を、受付時期・親権者口座・最低積立額・商品・手続きなど同じ基準で比較するためのページ。">
+<BaseLayout verifiedDate="2026-09-25" title="金融機関比較 | こどもNISA設計室" description="SBI証券・楽天証券・マネックス証券のこどもNISAについて、受付時期・親権者口座・積立条件・手続きを公式発表ベースで比較。">
   <section class="hero">
     <p class="eyebrow">COMPARE</p>
-    <h1>金融機関は「順位」より条件で比べる</h1>
-    <p class="lead">各社の正式発表を同じ項目・同じ根拠で比較します。広告報酬で掲載順や評価を変えません。</p>
+    <h1>こどもNISA対応を、公式発表だけで比べる</h1>
+    <p class="lead">2026年9月25日時点で確認できた各社の正式発表を、同じ項目で整理します。広告報酬で掲載順や評価を変えません。</p>
   </section>
 
   <section class="section">
     <div class="trust-note">
       <strong>現在、アフィリエイト広告リンクは掲載していません。</strong>
-      <p>今後掲載する場合はページ上部とCTA付近で明示し、広告の有無と編集評価を分離します。</p>
+      <p>SBI証券・楽天証券は公式にアフィリエイト制度を案内していますが、このサイトでの提携承認前は通常の公式リンクだけを掲載します。</p>
     </div>
 
-    <h2>比較する項目</h2>
-    <div class="table-wrap" role="region" aria-label="金融機関の比較基準" tabindex="0">
+    <h2>確認済み比較表</h2>
+    <div class="table-wrap" role="region" aria-label="こどもNISA金融機関比較" tabindex="0">
       <table>
-        <caption class="sr-only">こどもNISAで金融機関を比較するときの掲載項目とルール</caption>
-        <thead><tr><th>比較項目</th><th>掲載ルール</th></tr></thead>
+        <caption class="sr-only">SBI証券、楽天証券、マネックス証券のこどもNISA公式発表比較</caption>
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>SBI証券</th>
+            <th>楽天証券</th>
+            <th>マネックス証券</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>受付開始・対応状況</td><td>各社の公式発表日と対象条件を確認して掲載</td></tr>
-          <tr><td>親権者口座</td><td>必要性、同一金融機関要件、手続き方法を分けて確認</td></tr>
-          <tr><td>最低積立額</td><td>公式の注文条件を確認し、期間限定条件と通常条件を分離</td></tr>
-          <tr><td>対象商品</td><td>制度上の対象範囲と各社の実際の取扱いを混同しない</td></tr>
-          <tr><td>積立・ポイント等</td><td>未成年口座への適用可否と条件を公式資料で確認</td></tr>
-          <tr><td>手続き・必要書類</td><td>オンライン/書面、本人確認、親権者手続きを確認</td></tr>
-          <tr><td>最終確認日</td><td>金融機関ごと・重要項目ごとに情報鮮度を表示</td></tr>
+          <tr>
+            <th>受付・申込予定</th>
+            <td>2026/10/1 事前受付開始</td>
+            <td>2026/10/1 受付開始</td>
+            <td>積立契約申込は2026年12月初旬予定</td>
+          </tr>
+          <tr>
+            <th>親権者側の口座</th>
+            <td>親権者がSBI証券口座を持っていない場合、先に親権者の口座開設が必要</td>
+            <td>親権者の楽天証券総合口座が必要</td>
+            <td>証券総合取引口座からこどもNISA取引口座を操作</td>
+          </tr>
+          <tr>
+            <th>最低積立額</th>
+            <td>今回確認した公式発表では未確認</td>
+            <td>100円以上1円単位</td>
+            <td>今回確認した取引ルールでは未確認</td>
+          </tr>
+          <tr>
+            <th>対象商品</th>
+            <td>NISAつみたて投資枠対象の投資信託</td>
+            <td>長期・積立・分散投資の基準を満たす一定商品</td>
+            <td>同社取扱いのNISAつみたて投資枠対象銘柄</td>
+          </tr>
+          <tr>
+            <th>管理・積立の特徴</th>
+            <td>SBI証券Plusに親子口座切替機能</td>
+            <td>家族プログラム、iGrow、資産おまとめ管理予定</td>
+            <td>毎日つみたて（月額指定）・毎月つみたて。投信保有ポイントあり</td>
+          </tr>
+          <tr>
+            <th>詳細ページ</th>
+            <td><a href="/junior-nisa/brokers/sbi/">SBI証券の確認済み情報 →</a></td>
+            <td><a href="/junior-nisa/brokers/rakuten/">楽天証券の確認済み情報 →</a></td>
+            <td><a href="/junior-nisa/brokers/monex/">マネックス証券の確認済み情報 →</a></td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p class="table-note">※「未確認」はサービスが存在しないという意味ではありません。当サイトが今回確認した一次資料に明記されていない項目です。</p>
 
-    <h2>正式発表が揃うまでの方針</h2>
+    <h2>各社の公式発表を読む</h2>
+    <div class="provider-cards">
+      <article class="provider-card">
+        <p class="provider-status">公式発表確認済み</p>
+        <h3>SBI証券</h3>
+        <p>10月1日から事前受付。親権者口座、こども口座、税務署審査を経て2027年1月の開設予定が案内されています。</p>
+        <a class="text-link" href="/junior-nisa/brokers/sbi/">詳しく整理したページ →</a>
+      </article>
+      <article class="provider-card">
+        <p class="provider-status">公式発表確認済み</p>
+        <h3>楽天証券</h3>
+        <p>10月1日から受付。親権者の総合口座、住民票等の必要書類、100円からの積立などが案内されています。</p>
+        <a class="text-link" href="/junior-nisa/brokers/rakuten/">詳しく整理したページ →</a>
+      </article>
+      <article class="provider-card">
+        <p class="provider-status">取引ルール確認済み</p>
+        <h3>マネックス証券</h3>
+        <p>取引口座の仕組み、毎日・毎月積立、投信保有ポイント、12歳以降の払出し手続きまで公開されています。</p>
+        <a class="text-link" href="/junior-nisa/brokers/monex/">詳しく整理したページ →</a>
+      </article>
+    </div>
+
+    <h2>比較方針</h2>
     <ul class="policy-list">
       <li>未確認の仕様を推測で埋めません。</li>
       <li>「おすすめ1位」など根拠のない順位を作りません。</li>
-      <li>比較対象に広告案件がない会社も、利用者に重要なら同じ基準で扱います。</li>
-      <li>公式情報と編集部の説明を区別します。</li>
+      <li>広告案件がない会社も、利用者に重要なら同じ基準で扱います。</li>
+      <li>公式情報と編集部の整理・説明を区別します。</li>
     </ul>
 
     <div class="cta-row">

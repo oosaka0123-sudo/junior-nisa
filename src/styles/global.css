@@ -249,3 +249,10 @@ html{scroll-padding-top:88px}
 @media(max-width:640px){
   .professional-note{width:calc(100% - 28px);flex-direction:column;gap:4px}
 }
+
+.provider-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.provider-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.provider-card h3{font-family:"Noto Serif JP",serif;font-size:1.35rem;margin:.2rem 0 .55rem}
+.provider-card p{color:#587086;font-size:.84rem}
+.provider-status{display:inline-flex!important;width:auto;background:#eef8f5;color:#2a6658;border:1px solid #d7ebe5;border-radius:999px;padding:5px 9px;font-size:.68rem!important;font-weight:800}
+@media(max-width:760px){.provider-cards{grid-template-columns:1fr}}
