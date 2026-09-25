@@ -19,7 +19,8 @@ const { showNext = true } = Astro.props;
     <div><small>仮定の試算値</small><strong id="result">—</strong><span id="principal">—</span></div>
     <div class="chart" id="chart" aria-hidden="true"></div>
   </div>
-  {showNext && <a class="calc-next" href="/junior-nisa/compare/">次に金融機関の比較基準を見る →</a>}
+  <p class="calc-disclaimer">※ 手数料・税金・実際の価格変動・買付タイミング・商品ごとの差は考慮していません。将来の運用成果を保証するものではありません。</p>
+  {showNext && <a class="calc-next" href="/junior-nisa/compare/">結果を見たら金融機関の比較基準へ →</a>}
 </div>
 
 <script is:inline>

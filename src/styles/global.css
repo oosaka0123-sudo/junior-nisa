@@ -213,3 +213,39 @@ html{scroll-padding-top:88px}
   .compare-criteria{grid-template-columns:1fr}
   .footer-links{display:grid;grid-template-columns:1fr 1fr}
 }
+
+
+/* 2026-09-25 review follow-up */
+.inline-source{margin-top:8px;color:#708399;font-size:.72rem}
+.inline-source a{color:#0d67b7;font-weight:700;text-decoration:none}
+.inline-source a:hover{text-decoration:underline}
+.calc-disclaimer{margin:10px 0 0;color:#6e8091;font-size:.72rem;line-height:1.55}
+.faq-section{padding-top:18px;padding-bottom:6px}
+.faq-list{display:grid;gap:8px}
+.faq-list details{border:1px solid var(--line);border-radius:8px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.faq-list summary{cursor:pointer;list-style:none;padding:15px 44px 15px 16px;font-weight:800;position:relative}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:after{content:"＋";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#0d67b7;font-size:1.2rem}
+.faq-list details[open] summary:after{content:"−"}
+.faq-list details p{margin:0;padding:0 16px 16px;color:#536b81;font-size:.88rem}
+.faq-source{margin:10px 0 0;text-align:right}
+.faq-source a{color:#0d67b7;font-weight:800;text-decoration:none;font-size:.78rem}
+.next-read{margin-top:24px;padding:16px 18px;border-radius:8px;background:linear-gradient(135deg,#eef7ff,#f9fcff);border:1px solid #dce9f3}
+.next-read small{display:block;color:#6f8292;margin-bottom:5px}
+.next-read a{color:#0d5fae;font-weight:900;text-decoration:none}
+.hero-actions{flex-wrap:wrap}
+@media(max-width:920px){
+  .bottom-nav{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:640px){
+  .hero-visual img{aspect-ratio:4/3;object-fit:cover;object-position:center 42%}
+  .hero-actions{grid-template-columns:1fr}
+  .hero-actions .sub-link{min-height:42px;display:flex;align-items:center;justify-content:center}
+  .faq-list summary{min-height:52px}
+}
+
+.professional-note{width:min(1180px,calc(100% - 32px));margin:12px auto 0;display:flex;gap:10px;align-items:flex-start;background:#fff8e8;border-left:4px solid var(--amber);padding:12px 14px;font-size:.8rem;color:#6a5734}
+.professional-note strong{white-space:nowrap;color:#845b0b}
+@media(max-width:640px){
+  .professional-note{width:calc(100% - 28px);flex-direction:column;gap:4px}
+}
