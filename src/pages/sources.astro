@@ -1,18 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="公的資料・出典 | こどもNISA設計室" description="2027年の未成年向けNISA制度と贈与税を確認するための金融庁・財務省・国税庁の一次資料。">
+<BaseLayout verifiedDate="2026-09-26" title="公的資料・出典 | こどもNISA設計室" description="こどもNISA制度・贈与税・金融機関対応を確認するための公的資料と各社公式情報。">
   <section class="hero">
     <p class="eyebrow">PRIMARY SOURCES</p>
     <h1>公的資料・出典</h1>
-    <p class="lead">制度や税制は更新される可能性があります。重要な判断の前に、リンク先の最新資料もご確認ください。</p>
+    <p class="lead">制度・税・金融機関の取扱いを、それぞれの一次情報へ分けて確認できるようにします。</p>
   </section>
   <section class="section">
+    <h2>制度・税の公的資料</h2>
     <div class="cards">
-      <article class="card"><h2>財務省</h2><p>令和8年度税制改正の大綱。未成年者特定累積投資勘定、年60万円・600万円枠、払出し条件などの制度設計。</p><span class="source-meta">2026年9月23日確認</span><a href="https://www.mof.go.jp/tax_policy/tax_reform/outline/fy2026/08taikou_01.htm">税制改正大綱を見る →</a></article>
-      <article class="card"><h2>金融庁</h2><p>令和8年度税制改正の大綱について、金融庁関係の主要項目を解説する資料。</p><span class="source-meta">2026年9月23日確認</span><a href="https://www.fsa.go.jp/access/r7/270.html">金融庁資料を見る →</a></article>
-      <article class="card"><h2>国税庁 No.4408</h2><p>暦年課税の贈与税は、1年間の贈与財産合計から基礎控除110万円を差し引いて計算。</p><span class="source-meta">令和8年4月1日現在法令等 / 2026年9月23日確認</span><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4408.htm">贈与税の計算と税率 →</a></article>
-      <article class="card"><h2>国税庁 No.4410</h2><p>複数の人から贈与を受けても、暦年課税の基礎控除110万円は受贈者ごとに1年間で判定。</p><span class="source-meta">令和8年4月1日現在法令等 / 2026年9月23日確認</span><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4410.htm">複数人からの贈与 →</a></article>
+      <article class="card"><h3>財務省</h3><p>令和8年度税制改正の大綱。未成年者特定累積投資勘定、年60万円・600万円枠、払出し条件など。</p><span class="source-meta">2026年9月26日再確認</span><a href="https://www.mof.go.jp/tax_policy/tax_reform/outline/fy2026/08taikou_01.htm">税制改正大綱を見る →</a></article>
+      <article class="card"><h3>金融庁</h3><p>令和8年度税制改正の大綱について、金融庁関係の主要項目を解説する資料。</p><span class="source-meta">2026年9月26日再確認</span><a href="https://www.fsa.go.jp/access/r7/270.html">金融庁資料を見る →</a></article>
+      <article class="card"><h3>国税庁 No.4408</h3><p>暦年課税の贈与税は、1年間の贈与財産合計から基礎控除110万円を差し引いて計算。</p><span class="source-meta">2026年9月26日再確認</span><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4408.htm">贈与税の計算と税率 →</a></article>
+      <article class="card"><h3>国税庁 No.4410</h3><p>複数の人から贈与を受けた場合も、受贈者単位でその年の贈与を合計して判定。</p><span class="source-meta">2026年9月26日再確認</span><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/zoyo/4410.htm">複数人からの贈与 →</a></article>
+    </div>
+
+    <h2>金融機関の公式情報</h2>
+    <div class="cards">
+      <article class="card"><h3>SBI証券</h3><p>こどもNISAの事前受付、親権者口座、申込フロー。</p><a href="/junior-nisa/brokers/sbi/">確認済み情報 →</a></article>
+      <article class="card"><h3>楽天証券</h3><p>受付開始、親権者口座、必要書類、100円積立等。</p><a href="/junior-nisa/brokers/rakuten/">確認済み情報 →</a></article>
+      <article class="card"><h3>マネックス証券</h3><p>取引ルール、積立方法、ポイント、払出し手続き。</p><a href="/junior-nisa/brokers/monex/">確認済み情報 →</a></article>
+      <article class="card"><h3>三菱UFJ eスマート証券</h3><p>10月受付予定、親権者口座、未成年口座、100円積立。</p><a href="/junior-nisa/brokers/mufg-esmart/">確認済み情報 →</a></article>
+      <article class="card"><h3>松井証券</h3><p>10月1日予約受付、親権者口座、未成年口座、対象商品。</p><a href="/junior-nisa/brokers/matsui/">確認済み情報 →</a></article>
+      <article class="card"><h3>大和証券</h3><p>対象商品、金融機関変更、払出し、18歳以降の移行。</p><a href="/junior-nisa/brokers/daiwa/">確認済み情報 →</a></article>
     </div>
   </section>
 </BaseLayout>
