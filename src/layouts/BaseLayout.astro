@@ -20,6 +20,7 @@ const jpDate = verifiedDate?.replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$1年$2月$3�
 
 const labels: Record<string, string> = {
   '/junior-nisa/system/': '制度',
+  '/junior-nisa/old-junior-nisa/': '旧ジュニアNISAとの違い',
   '/junior-nisa/gift-tax/': '贈与税',
   '/junior-nisa/withdrawal/': '引き出し',
   '/junior-nisa/calculator/': '試算',
@@ -74,7 +75,8 @@ const breadcrumbSchema = {
 const isCurrent = (href: string) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
 
 const nextRead: Record<string, { href: string; label: string }> = {
-  '/junior-nisa/system/': { href: '/junior-nisa/gift-tax/', label: '次に「NISAと贈与税の違い」を確認する' },
+  '/junior-nisa/system/': { href: '/junior-nisa/old-junior-nisa/', label: '旧ジュニアNISAとの違いを確認する' },
+  '/junior-nisa/old-junior-nisa/': { href: '/junior-nisa/gift-tax/', label: '次に「NISAと贈与税の違い」を確認する' },
   '/junior-nisa/gift-tax/': { href: '/junior-nisa/calculator/', label: '次に積立額を試算する' },
   '/junior-nisa/withdrawal/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
   '/junior-nisa/calculator/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
