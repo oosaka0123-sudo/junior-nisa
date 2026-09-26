@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "check": "astro check"
+    "check": "astro check",
+    "check:links": "node scripts/check-internal-links.mjs"
   },
   "repository": {
     "type": "git",
