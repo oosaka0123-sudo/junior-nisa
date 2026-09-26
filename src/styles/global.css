@@ -256,3 +256,11 @@ html{scroll-padding-top:88px}
 .provider-card p{color:#587086;font-size:.84rem}
 .provider-status{display:inline-flex!important;width:auto;background:#eef8f5;color:#2a6658;border:1px solid #d7ebe5;border-radius:999px;padding:5px 9px;font-size:.68rem!important;font-weight:800}
 @media(max-width:760px){.provider-cards{grid-template-columns:1fr}}
+
+.provider-mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.provider-mini-grid a{display:block;text-decoration:none;border:1px solid #e1ebf3;border-radius:8px;background:#fbfdff;padding:11px 12px;transition:transform .2s ease,box-shadow .2s ease}
+.provider-mini-grid a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(29,78,121,.08)}
+.provider-mini-grid strong,.provider-mini-grid small{display:block}
+.provider-mini-grid strong{font-size:.82rem;color:#153a5b}
+.provider-mini-grid small{font-size:.67rem;color:#6f8396;margin-top:3px}
+@media(max-width:640px){.provider-mini-grid{grid-template-columns:1fr}}
