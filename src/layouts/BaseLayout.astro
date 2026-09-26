@@ -26,7 +26,15 @@ const labels: Record<string, string> = {
   '/junior-nisa/calculator/': '試算',
   '/junior-nisa/compare/': '金融機関比較',
   '/junior-nisa/compare/sbi-vs-rakuten/': 'SBI証券と楽天証券の比較',
+  '/junior-nisa/guides/': 'こどもNISAガイド',
   '/junior-nisa/guides/before-opening/': '口座開設前チェックリスト',
+  '/junior-nisa/guides/savings-scenarios/': '積立額別シミュレーション',
+  '/junior-nisa/brokers/sbi/': 'SBI証券',
+  '/junior-nisa/brokers/rakuten/': '楽天証券',
+  '/junior-nisa/brokers/monex/': 'マネックス証券',
+  '/junior-nisa/brokers/mufg-esmart/': '三菱UFJ eスマート証券',
+  '/junior-nisa/brokers/matsui/': '松井証券',
+  '/junior-nisa/brokers/daiwa/': '大和証券',
   '/junior-nisa/providers/': '金融機関比較',
   '/junior-nisa/sources/': '一次資料',
   '/junior-nisa/updates/': '更新情報',
@@ -37,7 +45,20 @@ const labels: Record<string, string> = {
 };
 
 const crumbs = [{ name: 'ホーム', url: new URL('/junior-nisa/', Astro.site).href }];
+const parentCrumbs: Record<string, { name: string; path: string }> = {
+  '/junior-nisa/compare/sbi-vs-rakuten/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/guides/before-opening/': { name: 'こどもNISAガイド', path: '/junior-nisa/guides/' },
+  '/junior-nisa/guides/savings-scenarios/': { name: 'こどもNISAガイド', path: '/junior-nisa/guides/' },
+  '/junior-nisa/brokers/sbi/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/brokers/rakuten/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/brokers/monex/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/brokers/mufg-esmart/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/brokers/matsui/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+  '/junior-nisa/brokers/daiwa/': { name: '金融機関比較', path: '/junior-nisa/compare/' },
+};
 if (!isHome) {
+  const parent = parentCrumbs[currentPath];
+  if (parent) crumbs.push({ name: parent.name, url: new URL(parent.path, Astro.site).href });
   crumbs.push({ name: labels[currentPath] ?? title.split('|')[0].trim(), url: canonical.href });
 }
 
@@ -59,6 +80,7 @@ const webpageSchema = {
   dateModified: verifiedDate,
   inLanguage: 'ja-JP',
   isPartOf: { '@type': 'WebSite', name: 'こどもNISA設計室', url: websiteSchema.url },
+  author: { '@type': 'Organization', name: 'こどもNISA設計室 編集部' },
 };
 
 const breadcrumbSchema = {
@@ -72,11 +94,21 @@ const breadcrumbSchema = {
   })),
 };
 
-const isCurrent = (href: string) => currentPath === href || (href === '/junior-nisa/compare/' && currentPath === '/junior-nisa/providers/');
+const isCurrent = (href: string) => {
+  if (href === '/junior-nisa/compare/') {
+    return currentPath === href ||
+      currentPath === '/junior-nisa/providers/' ||
+      currentPath.startsWith('/junior-nisa/brokers/') ||
+      currentPath.startsWith('/junior-nisa/compare/');
+  }
+  return currentPath === href;
+};
 
 const nextRead: Record<string, { href: string; label: string }> = {
   '/junior-nisa/system/': { href: '/junior-nisa/old-junior-nisa/', label: '旧ジュニアNISAとの違いを確認する' },
   '/junior-nisa/old-junior-nisa/': { href: '/junior-nisa/gift-tax/', label: '次に「NISAと贈与税の違い」を確認する' },
+  '/junior-nisa/guides/': { href: '/junior-nisa/guides/savings-scenarios/', label: '月1万・3万・5万円の試算を見る' },
+  '/junior-nisa/guides/savings-scenarios/': { href: '/junior-nisa/calculator/', label: '自分の条件で積立額を試算する' },
   '/junior-nisa/gift-tax/': { href: '/junior-nisa/calculator/', label: '次に積立額を試算する' },
   '/junior-nisa/withdrawal/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
   '/junior-nisa/calculator/': { href: '/junior-nisa/compare/', label: '次に金融機関の比較基準を見る' },
@@ -128,6 +160,7 @@ const nextRead: Record<string, { href: string; label: string }> = {
         <a class:list={{ active: isCurrent('/junior-nisa/gift-tax/') }} aria-current={isCurrent('/junior-nisa/gift-tax/') ? 'page' : undefined} href="/junior-nisa/gift-tax/">贈与税</a>
         <a class:list={{ active: isCurrent('/junior-nisa/withdrawal/') }} aria-current={isCurrent('/junior-nisa/withdrawal/') ? 'page' : undefined} href="/junior-nisa/withdrawal/">引き出し</a>
         <a class:list={{ active: isCurrent('/junior-nisa/calculator/') }} aria-current={isCurrent('/junior-nisa/calculator/') ? 'page' : undefined} href="/junior-nisa/calculator/">試算</a>
+        <a class:list={{ active: currentPath.startsWith('/junior-nisa/guides/') }} aria-current={currentPath.startsWith('/junior-nisa/guides/') ? 'page' : undefined} href="/junior-nisa/guides/">ガイド</a>
         <a class:list={{ active: isCurrent('/junior-nisa/compare/') }} aria-current={isCurrent('/junior-nisa/compare/') ? 'page' : undefined} href="/junior-nisa/compare/">金融機関</a>
         <a class:list={{ active: isCurrent('/junior-nisa/updates/') }} aria-current={isCurrent('/junior-nisa/updates/') ? 'page' : undefined} href="/junior-nisa/updates/">更新情報</a>
         <a class:list={{ active: isCurrent('/junior-nisa/sources/') }} aria-current={isCurrent('/junior-nisa/sources/') ? 'page' : undefined} href="/junior-nisa/sources/">一次資料</a>
@@ -140,6 +173,7 @@ const nextRead: Record<string, { href: string; label: string }> = {
           <a href="/junior-nisa/gift-tax/">贈与税</a>
           <a href="/junior-nisa/withdrawal/">引き出し</a>
           <a href="/junior-nisa/calculator/">試算</a>
+          <a href="/junior-nisa/guides/">ガイド</a>
           <a href="/junior-nisa/compare/">金融機関</a>
           <a href="/junior-nisa/updates/">更新情報</a>
           <a href="/junior-nisa/sources/">一次資料</a>
@@ -161,7 +195,10 @@ const nextRead: Record<string, { href: string; label: string }> = {
             </>
           ))}
         </nav>
-        <div class="verify-badge"><span aria-hidden="true">✓</span><time datetime={verifiedDate}>最終確認日：{jpDate}</time></div>
+        <div class="page-trust-meta">
+          <span class="editorial-byline">執筆・確認：こどもNISA設計室 編集部</span>
+          <div class="verify-badge"><span aria-hidden="true">✓</span><time datetime={verifiedDate}>最終確認日：{jpDate}</time></div>
+        </div>
       </div>
     )}
     {affiliate && (

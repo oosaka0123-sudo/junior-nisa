@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Calculator from '../components/Calculator.astro';
 ---
-<BaseLayout title="積立シミュレーター | こどもNISA設計室" description="毎月の積立額・年数・仮定利回りから、こどもNISAの積立イメージを参考試算。">
+<BaseLayout verifiedDate="2026-09-26" title="積立シミュレーター | こどもNISA設計室" description="毎月の積立額・年数・仮定利回りから、こどもNISAの積立イメージを参考試算。">
   <section class="hero">
     <p class="eyebrow">CALCULATOR</p>
     <h1>家族のお金を数字で考える</h1>
@@ -17,5 +17,8 @@ import Calculator from '../components/Calculator.astro';
       <li>毎月の積立額は0〜5万円、積立元本は600万円までに制限しています。</li>
       <li>結果だけで商品や金融機関を選ばず、制度・費用・手続きも確認してください。</li>
     </ul>
+    <div class="cta-row">
+      <a class="sub-link" href="/junior-nisa/guides/savings-scenarios/">月1万・3万・5万円の18年試算を見る →</a>
+    </div>
   </section>
 </BaseLayout>

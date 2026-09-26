@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const LIMIT = 6_000_000;
+const YEARS = 18;
+
+function simulate(monthly: number, annualRate: number) {
+  const monthlyRate = annualRate / 100 / 12;
+  let value = 0;
+  let principal = 0;
+  let capMonth: number | null = null;
+
+  for (let month = 1; month <= YEARS * 12; month++) {
+    const add = Math.min(monthly, LIMIT - principal);
+    value = (value + add) * (1 + monthlyRate);
+    principal += add;
+    if (principal >= LIMIT && capMonth === null) capMonth = month;
+  }
+  return { value: Math.round(value), principal, capMonth };
+}
+
+const plans = [10_000, 30_000, 50_000].map((monthly) => ({
+  monthly,
+  zero: simulate(monthly, 0),
+  three: simulate(monthly, 3),
+  five: simulate(monthly, 5),
+}));
+
+const yen = (n: number) => n.toLocaleString('ja-JP') + '円';
+const capText = (m: number | null) => {
+  if (!m) return '18年間では未到達';
+  const y = Math.floor(m / 12);
+  const mo = m % 12;
+  return mo ? `${y}年${mo}か月で到達` : `${y}年で到達`;
+};
+---
+<BaseLayout verifiedDate="2026-09-26" title="こどもNISA 月1万・3万・5万円の18年シミュレーション | こどもNISA設計室" description="こどもNISAで月1万円・3万円・5万円を18年間積み立てた場合を、元本600万円上限を反映して0%・3%・5%の仮定利回りで参考試算。">
+  <section class="hero">
+    <p class="eyebrow">SAVINGS SCENARIOS</p>
+    <h1>月1万・3万・5万円、18年でどうなる？</h1>
+    <p class="lead">600万円の非課税保有限度額を超えて元本を積み上げない前提で、0%・3%・5%の仮定利回りを比較します。</p>
+  </section>
+
+  <section class="section">
+    <div class="notice">
+      <strong>これは予測ではなく参考試算です。</strong>
+      <p>手数料・税金・実際の価格変動・買付タイミング・商品ごとの差は考慮していません。将来の運用成果を保証するものではありません。</p>
+    </div>
+
+    <div class="table-wrap" role="region" aria-label="積立額別シミュレーション" tabindex="0">
+      <table>
+        <caption class="sr-only">毎月1万円・3万円・5万円を18年間積み立てた参考試算</caption>
+        <thead>
+          <tr><th>毎月</th><th>元本</th><th>0%</th><th>3%</th><th>5%</th><th>600万円到達</th></tr>
+        </thead>
+        <tbody>
+          {plans.map((p) => (
+            <tr>
+              <th>{yen(p.monthly)}</th>
+              <td>{yen(p.zero.principal)}</td>
+              <td>{yen(p.zero.value)}</td>
+              <td>{yen(p.three.value)}</td>
+              <td>{yen(p.five.value)}</td>
+              <td>{capText(p.zero.capMonth)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scenario-cards">
+      <article class="card">
+        <h2>月1万円</h2>
+        <p>18年間の元本は216万円。600万円上限には届かないため、途中で積立を止める必要はありません。</p>
+      </article>
+      <article class="card">
+        <h2>月3万円</h2>
+        <p>元本は600万円で止まり、約16年8か月で上限に到達します。その後は新規積立をせず、既存残高だけを18年目まで参考計算しています。</p>
+      </article>
+      <article class="card">
+        <h2>月5万円</h2>
+        <p>年間60万円を使い切る水準です。10年で元本600万円に到達し、その後8年間は新規積立なしで参考計算しています。</p>
+      </article>
+    </div>
+
+    <h2>金額より先に「続けられるか」を見る</h2>
+    <p>上限まで使うこと自体が目的ではありません。教育費・生活防衛資金・家計の余力を考え、無理なく続けられる積立額を先に決める考え方が重要です。</p>
+
+    <div class="cta-row">
+      <a class="primary-btn" href="/junior-nisa/calculator/">自分の条件で試算する →</a>
+      <a class="sub-link" href="/junior-nisa/guides/before-opening/">口座開設前チェック →</a>
+    </div>
+  </section>
+</BaseLayout>
