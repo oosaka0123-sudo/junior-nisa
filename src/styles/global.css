@@ -264,3 +264,10 @@ html{scroll-padding-top:88px}
 .provider-mini-grid strong{font-size:.82rem;color:#153a5b}
 .provider-mini-grid small{font-size:.67rem;color:#6f8396;margin-top:3px}
 @media(max-width:640px){.provider-mini-grid{grid-template-columns:1fr}}
+
+.checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 18px}
+.check-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;box-shadow:var(--shadow)}
+.check-item>span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#eaf5ff;color:#0d67b7;font-weight:900}
+.check-item h2{font-family:"Noto Serif JP",serif;font-size:1.05rem;margin:0 0 5px}
+.check-item p{margin:0;color:#5f7488;font-size:.82rem}
+@media(max-width:700px){.checklist-grid{grid-template-columns:1fr}}
