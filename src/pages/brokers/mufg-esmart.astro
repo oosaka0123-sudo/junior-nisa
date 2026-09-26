@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderCta from '../../components/ProviderCta.astro';
 ---
 <BaseLayout verifiedDate="2026-09-26" title="三菱UFJ eスマート証券のこどもNISA | こどもNISA設計室" description="三菱UFJ eスマート証券のこどもNISAについて、10月受付、親権者口座、未成年口座、100円積立など公式ページを整理。">
   <section class="hero">
@@ -21,8 +22,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <li>詳細なこどもNISA申込方法は今後更新予定と明記。</li>
     </ul>
     <div class="cta-row">
-      <a class="primary-btn" href="https://kabu.com/company/lp/nisa/kodomo/01">公式こどもNISAページを確認 →</a>
-      <a class="sub-link" href="/junior-nisa/compare/">比較ページへ戻る →</a>
+      <ProviderCta provider="mufg-esmart" />
+      <a class="sub-link" href="/junior-nisa/compare/">6社比較へ戻る →</a>
     </div>
   </section>
 </BaseLayout>

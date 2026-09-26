@@ -1,0 +1,38 @@
+---
+import { providerLinks, type ProviderKey } from '../data/providers';
+
+const { provider, label } = Astro.props as { provider: ProviderKey; label?: string };
+const item = providerLinks[provider];
+const isAffiliate = Boolean(item.affiliateUrl);
+const href = item.affiliateUrl ?? item.officialUrl;
+const text = label ?? (isAffiliate ? `${item.name}の公式サイトへ` : `${item.name}の公式情報を確認`);
+---
+<div class="provider-cta-wrap">
+  {isAffiliate && <p class="provider-cta-pr"><strong>PR</strong> このリンクはアフィリエイト広告です。</p>}
+  <a
+    class="primary-btn provider-cta"
+    href={href}
+    rel={isAffiliate ? 'sponsored nofollow' : undefined}
+    data-provider={provider}
+    data-link-type={isAffiliate ? 'affiliate' : 'official'}
+  >{text} →</a>
+  <small class="provider-cta-note">
+    {isAffiliate
+      ? '広告リンク経由でも申込条件や費用は金融機関の公式ページで必ずご確認ください。'
+      : `現在は広告リンクではありません。公式情報を直接確認します。（${item.verifiedDate}確認）`}
+  </small>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.provider-cta').forEach((link) => {
+    if (link.dataset.tracked === '1') return;
+    link.dataset.tracked = '1';
+    link.addEventListener('click', () => {
+      window.dataLayer?.push({
+        event: 'provider_outbound_click',
+        provider: link.dataset.provider,
+        link_type: link.dataset.linkType
+      });
+    });
+  });
+</script>

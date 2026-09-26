@@ -271,3 +271,10 @@ html{scroll-padding-top:88px}
 .check-item h2{font-family:"Noto Serif JP",serif;font-size:1.05rem;margin:0 0 5px}
 .check-item p{margin:0;color:#5f7488;font-size:.82rem}
 @media(max-width:700px){.checklist-grid{grid-template-columns:1fr}}
+
+.provider-cta-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:min(100%,320px)}
+.provider-cta-wrap .provider-cta{width:100%}
+.provider-cta-note{color:#6f8292;font-size:.68rem;line-height:1.55;max-width:520px}
+.provider-cta-pr{margin:0;background:#fff4dc;border-left:3px solid var(--amber);padding:6px 9px;font-size:.72rem;color:#73561e}
+.provider-cta-pr strong{color:#8a5a00}
+@media(max-width:640px){.provider-cta-wrap{width:100%}.provider-cta-wrap .provider-cta{width:100%}}

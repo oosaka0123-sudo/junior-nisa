@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderCta from '../../components/ProviderCta.astro';
 ---
 <BaseLayout verifiedDate="2026-09-26" title="大和証券のこどもNISA | こどもNISA設計室" description="大和証券のこどもNISAについて、対象商品、金融機関変更不可、18歳以降の移行など公式ページを整理。">
   <section class="hero">
@@ -21,8 +22,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <li>12歳以降の払出しは一定要件のもとで可能。</li>
     </ul>
     <div class="cta-row">
-      <a class="primary-btn" href="https://www.daiwa.jp/nisa/kodomo_nisa/">大和証券の公式ページを確認 →</a>
-      <a class="sub-link" href="/junior-nisa/compare/">比較ページへ戻る →</a>
+      <ProviderCta provider="daiwa" />
+      <a class="sub-link" href="/junior-nisa/compare/">6社比較へ戻る →</a>
     </div>
   </section>
 </BaseLayout>
