@@ -31,3 +31,19 @@ Site status: do not add affiliate link yet.
 - When enabled, add visible PR/ad disclosure at page top and near transactional CTA when needed.
 - Do not change provider ordering based on commission.
 - Keep official-source links even after affiliate CTAs go live.
+
+
+## 三菱UFJ eスマート証券
+Official kid-NISA product information has been confirmed.
+Affiliate availability for this project has not been confirmed.
+Site status: normal official links only.
+
+## 松井証券
+Official kid-NISA product information and application guidance have been confirmed.
+Affiliate availability for this project has not been confirmed.
+Site status: normal official links only.
+
+## 大和証券
+Official kid-NISA product information has been confirmed.
+Affiliate availability for this project has not been confirmed.
+Site status: normal official links only.
