@@ -1,3 +1,5 @@
+[Reading 49 lines from start (total: 49 lines, 0 remaining)]
+
 # AFFILIATE_STATUS.md
 
 Last checked: 2026-09-25
@@ -34,16 +36,28 @@ Site status: do not add affiliate link yet.
 
 
 ## 三菱UFJ eスマート証券
-Official kid-NISA product information has been confirmed.
-Affiliate availability for this project has not been confirmed.
-Site status: normal official links only.
+Official affiliate program confirmed on 2026-09-26.
+Official partner ASPs:
+- afb
+- TCS Affiliate
+- ACCESSTRADE
+
+Site status: not yet approved/connected. Keep normal official links until approval.
 
 ## 松井証券
-Official kid-NISA product information and application guidance have been confirmed.
-Affiliate availability for this project has not been confirmed.
-Site status: normal official links only.
+Official affiliate program confirmed on 2026-09-26.
+Official partner ASPs:
+- アクセストレード
+- JANet
+- A8.net
+- TGアフィリエイト
+- TCSアフィリエイト
+
+Site status: not yet approved/connected. Keep normal official links until approval.
 
 ## 大和証券
 Official kid-NISA product information has been confirmed.
 Affiliate availability for this project has not been confirmed.
 Site status: normal official links only.
+
+[executed on device: ks-pc02 (0816891f-2eb8-4c29-851c-1e77f9e9ac5d)]

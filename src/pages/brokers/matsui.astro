@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderCta from '../../components/ProviderCta.astro';
 ---
 <BaseLayout verifiedDate="2026-09-26" title="松井証券のこどもNISA | こどもNISA設計室" description="松井証券のこどもNISAについて、10月1日予約受付、親権者口座、未成年口座、対象商品など公式Q&Aを整理。">
   <section class="hero">
@@ -21,8 +22,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <li>2026年12月以降に税務署審査など一部手続き予定。</li>
     </ul>
     <div class="cta-row">
-      <a class="primary-btn" href="https://support.matsui.co.jp/faq/show/56741?site_domain=faq">松井証券の公式Q&Aを確認 →</a>
-      <a class="sub-link" href="/junior-nisa/compare/">比較ページへ戻る →</a>
+      <ProviderCta provider="matsui" />
+      <a class="sub-link" href="/junior-nisa/compare/">6社比較へ戻る →</a>
     </div>
   </section>
 </BaseLayout>
