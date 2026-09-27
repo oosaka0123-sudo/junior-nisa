@@ -5,5 +5,6 @@ export default defineConfig({
   site: 'https://oosaka0123-sudo.github.io/junior-nisa/',
   base: '/junior-nisa',
   trailingSlash: 'always',
-  integrations: [sitemap()]
+  integrations: [sitemap({ filter: (page) => page !== 'https://oosaka0123-sudo.github.io/junior-nisa/providers/' })]
 });
+
