@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="広告ポリシー | こどもNISA設計室" description="アフィリエイト広告、PR表示、掲載順、編集独立性に関する方針。">
+<BaseLayout verifiedDate="2026-11-07" title="広告ポリシー | こどもNISA設計室" description="アフィリエイト広告、PR表示、掲載順、編集独立性に関する方針。">
   <section class="hero">
     <p class="eyebrow">ADVERTISING POLICY</p>
     <h1>広告ポリシー</h1>
@@ -9,17 +9,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
   <section class="section">
     <div class="trust-note">
-      <strong>現時点では、サイト内にアフィリエイト広告リンクを掲載していません。</strong>
-      <p>将来掲載する場合は、対象ページ上部と必要なCTA付近で「PR」「広告」等を明瞭に表示します。</p>
+      <strong>PR表示のあるリンクだけがアフィリエイト広告です。</strong>
+      <p>広告リンクが有効なページでは、ページ上部またはCTA付近に「PR」「広告」を明瞭に表示します。PR表示がない金融機関CTAは通常の公式リンクです。</p>
     </div>
+    <h2>2026年11月7日時点の確認状況</h2>
+    <p>SBI証券、楽天証券、三菱UFJ eスマート証券、松井証券は、各社公式サイトでアフィリエイトプログラムを案内していることを確認しています。マネックス証券、大和証券については、当サイトが一般公開の公式アフィリエイト制度を確認できた場合に追記します。</p>
     <h2>広告掲載時のルール</h2>
     <ul class="policy-list">
       <li>広告報酬の高低で比較表の順位や評価を変更しません。</li>
       <li>広告案件がない金融機関でも、比較上重要なら同じ基準で掲載します。</li>
-      <li>広告リンク先が金融機関の公式ページであることを明記します。</li>
+      <li>広告リンクは、金融機関または金融機関が承認したASPの広告素材・遷移先を使用します。</li>
+      <li>外務員登録のない運営者として、金融商品の勧誘や個別商品の推奨・説明を目的とした広告表現は行いません。</li>
       <li>キャンペーン等は確認日・条件・終了可能性を併記します。</li>
       <li>編集記事を広告ではないように見せる表示は行いません。</li>
     </ul>
-    <p><a class="text-link" href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing">消費者庁：ステルスマーケティング規制を確認する →</a></p>
+    <div class="cta-row">
+      <a class="primary-btn" href="/junior-nisa/affiliate/">金融機関を選ぶ・公式サイト案内 →</a>
+      <a class="text-link" href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing">消費者庁：ステルスマーケティング規制を確認する →</a>
+    </div>
   </section>
 </BaseLayout>
