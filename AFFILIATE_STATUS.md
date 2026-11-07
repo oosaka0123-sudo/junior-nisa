@@ -55,7 +55,13 @@ Official partner ASPs:
 - TGアフィリエイト
 - TCSアフィリエイト
 
-Site status: affiliate URL not connected.
+A8.net status checked on 2026-11-07:
+- Program: 株式、先物、投資信託など豊富な投資サービスを取り扱う老舗ネット証券【松井証券】
+- Program ID: s00000018318001
+- Status: 提携申請中
+- Displayed reward at check time: 新規口座開設1,000円
+
+Site status: waiting for advertiser approval.
 Public CTA: normal official link until approval.
 
 ## 大和証券

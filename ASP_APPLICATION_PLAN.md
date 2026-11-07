@@ -26,14 +26,17 @@ Supporting pages:
 - /about/privacy/
 
 A8 steps:
-1. Log in to A8.net.
-2. Program search: 「松井証券」.
-3. Open program details and confirm the current achievement condition, prohibited media/keywords, listing restrictions, and whether the program is immediate or screened.
-4. Select this site as the appeal site.
-5. Submit partnership application.
-6. Record the status below.
+1. Application has already been submitted.
+2. Do not submit a duplicate request while status is 提携申請中.
+3. After approval, open the approved ad-link creation screen.
+4. Copy the tracking URL exactly.
+5. Add only that URL to the Matsui affiliateUrl in src/data/providers.ts.
+6. Deploy and verify PR disclosure + sponsored/nofollow + click tracking.
 
-Status: NOT SUBMITTED / USER ACTION REQUIRED
+Status: SUBMITTED / PENDING ADVERTISER APPROVAL
+Checked: 2026-11-07
+Program ID: s00000018318001
+Displayed reward at check time: 新規口座開設1,000円
 
 ## Priority 2 — ACCESSTRADE / 三菱UFJ eスマート証券
 Public AccessTrade page checked in 2026 showed:
