@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProviderCta from '../components/ProviderCta.astro';
+import { providerLinks } from '../data/providers';
+
+const hasAffiliate = Object.values(providerLinks).some((item) => Boolean(item.affiliateUrl));
+
+const providers = [
+  {
+    key: 'sbi',
+    name: 'SBI証券',
+    status: 'アフィリエイト制度確認済み',
+    summary: 'こどもNISAの事前受付、親権者口座、こども口座からの申込みを案内。',
+    points: ['親権者口座の有無を確認', 'こども口座の有無を確認', '税務署審査後に2027年1月開設予定'],
+  },
+  {
+    key: 'rakuten',
+    name: '楽天証券',
+    status: 'アフィリエイト制度確認済み',
+    summary: '親権者の総合口座、必要書類、こども口座とNISAの同時申込みを案内。',
+    points: ['親権者の楽天証券総合口座が必要', '住民票等の必要書類を確認', '100円以上1円単位の積立を案内'],
+  },
+  {
+    key: 'monex',
+    name: 'マネックス証券',
+    status: '公開アフィリエイト制度は当サイト未確認',
+    summary: '2026年10月1日から事前申込みを受付。積立方法や取引ルールを公式に案内。',
+    points: ['こどもNISA事前申込み受付中', '毎日・毎月積立のルールを確認', '投信保有ポイント等を案内'],
+  },
+  {
+    key: 'mufg-esmart',
+    name: '三菱UFJ eスマート証券',
+    status: 'アフィリエイト制度確認済み',
+    summary: '親権者口座、未成年口座、こどもNISAの流れを案内。',
+    points: ['親権者口座から手続きを開始', '未成年口座の有無を確認', '月100円からの積立を案内'],
+  },
+  {
+    key: 'matsui',
+    name: '松井証券',
+    status: 'アフィリエイト制度確認済み',
+    summary: '親権者の総合口座と子どもの未成年口座を前提に申込手続きを案内。',
+    points: ['親権者の総合口座が必要', '子どもの未成年口座が必要', 'つみたて投資枠対象投信を取扱い'],
+  },
+  {
+    key: 'daiwa',
+    name: '大和証券',
+    status: '公開アフィリエイト制度は当サイト未確認',
+    summary: '対象商品、払出し、18歳以降の移行に加え、こどもNISA口座開設キャンペーンも実施。',
+    points: ['0〜17歳が対象', '12歳以降は一定要件で払出し可', '2026/11/2〜2027/3/31に口座開設キャンペーン'],
+  },
+] as const;
+---
+<BaseLayout
+  verifiedDate="2026-11-07"
+  affiliate={hasAffiliate}
+  title="こどもNISA 金融機関を選ぶ・公式サイト案内 | こどもNISA設計室"
+  description="こどもNISA対応金融機関を、親権者口座・必要書類・積立条件・公式情報で整理。広告報酬で順位付けせず、公式サイトへの確認導線を提供します。"
+>
+  <section class="hero affiliate-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">OPEN AN ACCOUNT</p>
+      <h1>金融機関を選ぶ前に、条件を整理する</h1>
+      <p class="lead">「どこが1位か」ではなく、家族の状況と各社の正式条件を照らし合わせて選びます。PR表示のあるCTAだけが広告リンクです。</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#providers">6社を確認する →</a>
+        <a class="sub-link" href="/junior-nisa/guides/before-opening/">口座開設前チェック →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="affiliate-explainer">
+      <article>
+        <strong>掲載順</strong>
+        <p>広告報酬では決めません。確認できた公式情報を同じ基準で整理します。</p>
+      </article>
+      <article>
+        <strong>広告リンク</strong>
+        <p>PR表示のあるCTAだけがアフィリエイト広告です。表示がない場合は通常の公式リンクです。</p>
+      </article>
+      <article>
+        <strong>最終判断</strong>
+        <p>申込条件・費用・キャンペーンは金融機関の公式ページで必ず再確認してください。</p>
+      </article>
+    </div>
+
+    <h2>まず確認する5項目</h2>
+    <div class="affiliate-check-grid">
+      <article><span>01</span><strong>親権者口座</strong><p>親側の総合口座が必要か。</p></article>
+      <article><span>02</span><strong>未成年口座</strong><p>子ども名義口座を先に作る必要があるか。</p></article>
+      <article><span>03</span><strong>必要書類</strong><p>住民票・マイナンバー・続柄確認など。</p></article>
+      <article><span>04</span><strong>積立条件</strong><p>最低積立額、対象商品、設定方法。</p></article>
+      <article><span>05</span><strong>管理しやすさ</strong><p>親子口座の切替、アプリ、管理機能。</p></article>
+    </div>
+  </section>
+
+  <section class="section affiliate-provider-section" id="providers">
+    <div class="section-title"><span></span><div><p>OFFICIAL LINKS</p><h2>確認済み6社</h2></div></div>
+    <p class="muted">2026年11月7日時点。未確認事項は推測で補いません。PR表示がないCTAは広告リンクではありません。</p>
+
+    <div class="affiliate-provider-grid">
+      {providers.map((p) => (
+        <article class="affiliate-provider-card">
+          <div class="affiliate-provider-head">
+            <div>
+              <p class="provider-status">{p.status}</p>
+              <h3>{p.name}</h3>
+            </div>
+            <a class="provider-detail-link" href={`/junior-nisa/brokers/${p.key}/`}>詳細 →</a>
+          </div>
+          <p>{p.summary}</p>
+          <ul>
+            {p.points.map((point) => <li>{point}</li>)}
+          </ul>
+          <ProviderCta provider={p.key} label={`${p.name}の公式サイトを確認`} />
+          {providerLinks[p.key].affiliateNetworks.length > 0 && (
+            <details class="affiliate-network-note">
+              <summary>広告提携制度の確認状況</summary>
+              <p>公式に案内されているASP：{providerLinks[p.key].affiliateNetworks.join(' / ')}</p>
+              <p>このサイトで実際に広告リンクが有効な場合はCTA直前にPR表示が出ます。</p>
+            </details>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section affiliate-flow">
+    <h2>迷ったら、この順番で決める</h2>
+    <ol class="affiliate-steps">
+      <li><span>1</span><div><strong>制度を確認</strong><p>0〜17歳、年60万円、600万円枠などを確認。</p></div></li>
+      <li><span>2</span><div><strong>家計の積立額を決める</strong><p>上限を使い切るより、継続できる金額を優先。</p></div></li>
+      <li><span>3</span><div><strong>必要書類と口座条件を確認</strong><p>親権者口座・未成年口座・住民票等を確認。</p></div></li>
+      <li><span>4</span><div><strong>2〜3社に絞る</strong><p>積立条件・管理機能・手続きのしやすさで比較。</p></div></li>
+      <li><span>5</span><div><strong>公式サイトで最終確認</strong><p>申込直前に最新条件・キャンペーン・注意事項を見る。</p></div></li>
+    </ol>
+    <div class="cta-row">
+      <a class="primary-btn" href="/junior-nisa/compare/">6社の詳細比較を見る →</a>
+      <a class="sub-link" href="/junior-nisa/calculator/">積立額を試算する →</a>
+    </div>
+  </section>
+
+  <section class="section affiliate-faq">
+    <h2>広告・アフィリエイトについて</h2>
+    <div class="faq-list">
+      <details>
+        <summary>広告報酬が高い会社を上位にしていますか？</summary>
+        <p>していません。掲載順や評価を広告報酬で変更しません。広告案件がない会社も、比較上重要なら同じ基準で掲載します。</p>
+      </details>
+      <details>
+        <summary>どのリンクが広告ですか？</summary>
+        <p>CTA付近に「PR このリンクはアフィリエイト広告です」と表示されるリンクだけが広告です。PR表示がないCTAは通常の公式リンクです。</p>
+      </details>
+      <details>
+        <summary>このページを見て、そのまま申込を決めてよいですか？</summary>
+        <p>申込前に必ず金融機関の公式ページで最新の条件、手数料、対象商品、キャンペーン、注意事項をご確認ください。</p>
+      </details>
+      <details>
+        <summary>個別の商品をおすすめしてくれますか？</summary>
+        <p>個別商品の勧誘や、家庭ごとの投資判断の推奨は行いません。制度と金融機関の確認済み事実を整理することに限定しています。</p>
+      </details>
+    </div>
+
+    <div class="affiliate-policy-links">
+      <a href="/junior-nisa/about/advertising-policy/">広告ポリシー →</a>
+      <a href="/junior-nisa/about/editorial-policy/">編集ポリシー →</a>
+      <a href="/junior-nisa/sources/">一次資料 →</a>
+    </div>
+  </section>
+</BaseLayout>
